@@ -22,6 +22,7 @@ class UserTest(unittest.TestCase):
     WAIT_TIME_IFRAME = float(config['DEFAULT']['WAIT_TIME_LOAD_IFRAME'])
     WAIT_TIME_QUIT = float(config['DEFAULT']['WAIT_TIME_BEFORE_CLOSING_BROWSER'])
     WAIT_TIME_REFRESH = float(config['DEFAULT']['WAIT_TIME_REFRESH'])
+    READY_THRESHOLD = float(config['DEFAULT']['READY_THRESHOLD'])
     ASSIGNMENT_PATH = config['DEFAULT']['SUBMIT_ASSIGNMENT_PATH']
     TEST_CASE = config['DEFAULT']['TEST_CASE']
     user_id = "unknown"
@@ -46,6 +47,8 @@ class UserTest(unittest.TestCase):
         # self.sections = arg_list[5:10]
         self.course = arg_list[5]
         self.task = arg_list[6]
+        with open("totalUsers.txt", "r") as totalUsers_file:
+            self.totalUsers = int(totalUsers_file.readline())
         # print(self.user_id + " " + self.password + " " + self.computing_id + " " + self.bb_user_role + " " +
         #       self.user_account_type, self.sections, self.task)
       

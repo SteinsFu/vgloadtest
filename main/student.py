@@ -266,7 +266,7 @@ class Student():
 
             # Wait until all users ready
             try:
-                while(self.unreadyUsers > 20):
+                while(self.unreadyUsers > int(parent.READY_THRESHOLD * parent.totalUsers)):
                     with open("unreadyUsers.txt","r+") as unreadyUsers_file:
                         self.unreadyUsers = int(unreadyUsers_file.readline())
                         # print("\'" + parent.user_id + "\':", "Waiting... Unready Users Left:", self.unreadyUsers)

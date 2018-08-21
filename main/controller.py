@@ -31,6 +31,9 @@ class MassControl:
         # Create a file to let all threads keep check on the no. of unreadyUsers
         with open("unreadyUsers.txt","w") as unreadyUsers_file:
             unreadyUsers_file.write(str(config['COPY']))
+        # Create a file to store the totle no. of users
+        with open("totalUsers.txt", "w") as totalUsers_file:
+            totalUsers_file.write(str(config['COPY']))
 
         # number of copy
         cnt = 0
