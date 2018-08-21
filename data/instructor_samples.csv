@@ -1,0 +1,11 @@
+No.,Blackboard instructor account,Password,Computing Id,BB User role,User account type,Section,Section,Section,Section,Section,Section
+1,T00001,password,b00001,Instructor,"CUSIS, Blackboard",-,-T01,-T02,-T03,,
+2,T00002,password,b00002,Instructor,"CUSIS, Blackboard",-,-T03,-T04,-T05,-T06,-T07
+3,T00003,password,b00003,Instructor,"CUSIS, Blackboard",-,-T12,-T13,,,
+4,T00004,password,b00004,Instructor,"CUSIS, Blackboard",,,,,,
+5,T00005,password,b00005,Teaching Assistant,"CUSIS, Blackboard",,,,,,
+16,T00016,password,-,Instructor,Blackboard only,-,-T01,-T02,,,
+17,T00017,password,-,Instructor,Blackboard only,-,-T01,,,,
+18,T00018,password,-,Instructor,Blackboard only,-,,,,,
+19,T00019,password,-,Instructor,Blackboard only,,,,,,
+20,T00020,password,-,Teaching Assistant,Blackboard only,,,,,,
