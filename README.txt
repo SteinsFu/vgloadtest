@@ -18,7 +18,7 @@ Testing Environemnt: Python 3.6.5 64-bit
         measure.py
         robot.py                    (loadtest_slave.py)
         student.python
-        template.py                 (loadtest_main.py)
+    chromedriver
     README.text
     uploadfile.txt
 

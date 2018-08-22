@@ -254,25 +254,18 @@ class Student():
 
             # Say I am ready to submit
             try:
-                with open("unreadyUsers.txt","r+") as unreadyUsers_file:
-                    self.unreadyUsers = int(unreadyUsers_file.readline()) - 1
-                    print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", self.unreadyUsers)
-                    unreadyUsers_file.seek(0)
-                    unreadyUsers_file.write(str(self.unreadyUsers))
-                    unreadyUsers_file.truncate()
+                parent.totalAndUnreadyUsers[1] -= 1
+                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1])
             except:
                 print("\'" + parent.user_id + "\':", "Open unreadyUsers.txt Failed (read & rewrite):", sys.exc_info()[0:2])
                 continue
 
             # Wait until all users ready
             try:
-                while(self.unreadyUsers > int(parent.READY_THRESHOLD * parent.totalUsers)):
-                    with open("unreadyUsers.txt","r+") as unreadyUsers_file:
-                        self.unreadyUsers = int(unreadyUsers_file.readline())
-                        # print("\'" + parent.user_id + "\':", "Waiting... Unready Users Left:", self.unreadyUsers)
+                while(parent.totalAndUnreadyUsers[1] > int(parent.READY_THRESHOLD * parent.totalAndUnreadyUsers[0])):
                     time.sleep(1)
             except:
-                print("\'" + parent.user_id + "\':", "Open unreadyUsers.txt Failed (read):", sys.exc_info()[0:2])
+                print("\'" + parent.user_id + "\':", "Waiting Unready Users Failed:", sys.exc_info()[0:2])
                 continue
 
             # click submit button 
@@ -319,17 +312,17 @@ class Student():
                 continue
             time.sleep(self.submit_config["SLEEP_TIME"])
 
-        # calculate the min, max, avg in the log['results']
-        for task in self.log['results']:
-            self.log['stat'][task]['min'] = min(self.log['results'][task])
-            self.log['stat'][task]['max'] = max(self.log['results'][task])
-            self.log['stat'][task]['avg'] = sum(self.log['results'][task]) / float(len(self.log['results'][task]))
+        # # calculate the min, max, avg in the log['results']
+        # for task in self.log['results']:
+        #     self.log['stat'][task]['min'] = min(self.log['results'][task])
+        #     self.log['stat'][task]['max'] = max(self.log['results'][task])
+        #     self.log['stat'][task]['avg'] = sum(self.log['results'][task]) / float(len(self.log['results'][task]))
 
-        # delete the detail records for submission
-        del self.log['results']
+        # # delete the detail records for submission
+        # del self.log['results']
 
-        # write the results under path:'/test_results/<TEST_CASE>.txt'
-        file = open('log/test_results/' + parent.TEST_CASE + '.txt', 'a+')
-        file.write("\n")
-        file.write(json.dumps(self.log, indent=4))
-        file.close()
+        # # write the results under path:'/test_results/<TEST_CASE>.txt'
+        # file = open('log/test_results/' + parent.TEST_CASE + '.txt', 'a+')
+        # file.write("\n")
+        # file.write(json.dumps(self.log, indent=4))
+        # file.close()

@@ -125,7 +125,7 @@ cases = {
     'case_uat_1':[
         {
             'ROLE': 'S',
-            'COPY': 25,
+            'COPY': 50,
             'TASK': 'submit_stress_test_individual_asg_1'
         }
     ],
