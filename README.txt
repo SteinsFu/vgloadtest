@@ -84,6 +84,8 @@ Testing Environemnt: Python 3.6.5 64-bit
 
 
 # Setup Docker Environment (ubuntu) to run:
+    # start docker service:
+    > $ service docker start
     # start a ubuntu docker container:
     > $ docker run -it ubuntu
 
