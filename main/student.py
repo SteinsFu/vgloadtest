@@ -130,7 +130,7 @@ class Student():
                     break
                 except:
                     try_string = " Trying again..." if (i < (try_times-1)) else "Stop trying..."
-                    print("\'" + parent.user_id + "\':", "Fail to switch to iframe of blackboard.", try_string)
+                    print("\'" + parent.user_id + "\':", "Fail to switch to iframe of blackboard.", try_string, "(" + str(i+1) + ")")
                     time.sleep(parent.WAIT_TIME_NORMAL)
                     continue
             # 2.go to course content
@@ -160,7 +160,7 @@ class Student():
                 print("\'" + parent.user_id + "\':", "Submission Page doesn't Load Correctly")
                 reload_page()
                 # driver.save_screenshot(str(that.user_id) + '_' + str(count)+'.png')
-                continue
+                pass
 
             # check if the selector exist 
             try:

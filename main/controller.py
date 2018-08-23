@@ -88,7 +88,7 @@ class MassControl:
             while(self.totalAndUnreadyUsers[1] > int(self.READY_THRESHOLD * self.totalAndUnreadyUsers[0])):
                 time.sleep(2)
             print("All Users Ready to submit!")
-            input("Press ENTER to Continue...")
+            input("Press ENTER to Continue...\n")
             self.allReady[0] = True
 
 
