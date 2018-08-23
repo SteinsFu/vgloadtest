@@ -92,11 +92,7 @@ Testing Environemnt: Python 3.6.5 64-bit
     # inside ubuntu:
 	
 	# install python3:
-	> ubuntu$ apt-get update \
-		&& apt-get install -y python3-pip python3-dev \
-		&& cd /usr/local/bin \
-		&& ln -s /usr/bin/python3 python \
-		&& pip3 install --upgrade pip
+	> ubuntu$ apt-get update && apt-get install -y python3-pip python3-dev && cd /usr/local/bin && ln -s /usr/bin/python3 python && pip3 install --upgrade pip
 	
 	# install selenium 3.13.0:
 	> ubuntu$ pip install selenium==3.13.0
