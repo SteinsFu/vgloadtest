@@ -23,12 +23,15 @@ class MassControl:
         # set the test case 
         self.TEST_CASE = config['DEFAULT']['TEST_CASE']
         self.WAIT_TIME_SPAWN_TEST = float(config['DEFAULT']['WAIT_TIME_BETWEEN_SPAWNING_EACH_TEST'])
-
+        self.READY_THRESHOLD = float(config['DEFAULT']['READY_THRESHOLD'])
 
 
     def do_test_case(self, config, executor):
         # Create a list storing TotalUsers & UnreadyUsers        
-        totalAndUnreadyUsers = [int(config['COPY']), int(config['COPY'])]
+        self.totalAndUnreadyUsers = [int(config['COPY']), int(config['COPY'])]
+        # Create a flag to determine all users are ready to submit
+        self.allReady = [False]
+
 
         # number of copy
         cnt = 0
@@ -53,7 +56,7 @@ class MassControl:
                     if (cnt >= config["COPY"]): break
                     if (row[0] != 'No.'):
                         cnt += 1
-                        executor.submit(robot.Robot().launch, row, config['TASK'], totalAndUnreadyUsers)
+                        executor.submit(robot.Robot().launch, row, config['TASK'], self.totalAndUnreadyUsers, self.allReady)
                         time.sleep(self.WAIT_TIME_SPAWN_TEST)
 
                 self.next_to_use[self.role] += cnt
@@ -81,6 +84,13 @@ class MassControl:
 
                 # for each group (eg. group with COPY=20) to do the task
                 self.do_test_case(case, executor)
+            
+            while(self.totalAndUnreadyUsers[1] > int(self.READY_THRESHOLD * self.totalAndUnreadyUsers[0])):
+                time.sleep(2)
+            print("All Users Ready to submit!")
+            input("Press ENTER to Continue...")
+            self.allReady[0] = True
+
 
 
 if __name__ == '__main__':

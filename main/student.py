@@ -255,18 +255,19 @@ class Student():
             # Say I am ready to submit
             try:
                 parent.totalAndUnreadyUsers[1] -= 1
-                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1])
+                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1], "| All Ready?:", parent.allReady)
             except:
                 print("\'" + parent.user_id + "\':", "Open unreadyUsers.txt Failed (read & rewrite):", sys.exc_info()[0:2])
                 continue
 
             # Wait until all users ready
             try:
-                while(parent.totalAndUnreadyUsers[1] > int(parent.READY_THRESHOLD * parent.totalAndUnreadyUsers[0])):
+                while(not parent.allReady[0]):
                     time.sleep(1)
             except:
                 print("\'" + parent.user_id + "\':", "Waiting Unready Users Failed:", sys.exc_info()[0:2])
                 continue
+
 
             # click submit button 
             try:

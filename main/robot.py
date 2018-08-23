@@ -103,11 +103,12 @@ class Robot:
         self.end_test()
 
 
-    def launch(self, args, task, totalAndUnreadyUsers):
+    def launch(self, args, task, totalAndUnreadyUsers, allReady):
         config = configparser.ConfigParser()
         config.read('main/config/config.ini')
 
         self.totalAndUnreadyUsers = totalAndUnreadyUsers
+        self.allReady = allReady
         self.WAIT_TIME_NORMAL = float(config['DEFAULT']['WAIT_TIME_BETWEEN_NORMAL_PROCESSES'])
         self.WAIT_TIME_IFRAME = float(config['DEFAULT']['WAIT_TIME_LOAD_IFRAME'])
         self.WAIT_TIME_QUIT = float(config['DEFAULT']['WAIT_TIME_BEFORE_CLOSING_BROWSER'])

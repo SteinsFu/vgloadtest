@@ -83,8 +83,32 @@ Testing Environemnt: Python 3.6.5 64-bit
     3.  create a new task in tasks_config with the customized parameters 
 
 
-    
+# Setup Docker Environment (ubuntu) to run:
+    # start a ubuntu docker container:
+    > $ docker run -it ubuntu
 
+    # inside ubuntu:
+	
+	# install python3:
+	> ubuntu$ apt-get update \
+		&& apt-get install -y python3-pip python3-dev \
+		&& cd /usr/local/bin \
+		&& ln -s /usr/bin/python3 python \
+		&& pip3 install --upgrade pip
+	
+	# install selenium 3.13.0:
+	> ubuntu$ pip install selenium==3.13.0
 
+	# install related library:
+	> ubuntu$ apt-get install libnss3-dev
+
+	# install chrome:
+	> ubuntu$ apt-get install wget
+	> ubuntu$ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	> ubuntu$ dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+
+	# Go to vgloadtest_uat directory and run the program:
+	> ubuntu$ cd vgloadtest_uat
+	> ubuntu$ python main/controller.py
 
 
