@@ -150,7 +150,7 @@ class Student():
         while count < self.submit_config["NUMBER_OF_SUBMISSION"]: 
             count += 1
 
-            print("\'" + parent.user_id + "\':", "Submit Assignment Start:", count)
+            print("\'" + parent.user_id + "\':", "Filling Assignment Form Start:", count)
 
             # check if the page loads correctly
             try:
@@ -188,7 +188,7 @@ class Student():
                 reload_page()
                 continue
 
-            time.sleep(self.submit_config["SLEEP_TIME"])
+            # time.sleep(self.submit_config["SLEEP_TIME"])
 
             # select assignment marker 
             try:
@@ -209,7 +209,7 @@ class Student():
                 reload_page()
                 continue
 
-            time.sleep(self.submit_config["SLEEP_TIME"])
+            # time.sleep(self.submit_config["SLEEP_TIME"])
 
             # select assignment file
             try:
@@ -245,12 +245,13 @@ class Student():
                     try:
                         submit_group_index = count % len(self.group) - 1
                         driver.find_element_by_xpath("//select[@name='studentElgibleGroups']/option[@label='" + self.group[submit_group_index] + "']").click()
+                        time.sleep(self.submit_config["SLEEP_TIME"] + 2)
                     except:
                         print("\'" + parent.user_id + "\':", "Find Group Option Element Failed:", sys.exc_info()[0:2])
             except:
                 print("\'" + parent.user_id + "\':", "Find Group Select Element Failed:", sys.exc_info()[0:2])
                 continue
-            time.sleep(self.submit_config["SLEEP_TIME"] + 2)
+            # time.sleep(self.submit_config["SLEEP_TIME"])
 
             # Say I am ready to submit
             try:

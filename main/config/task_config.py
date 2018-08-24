@@ -83,9 +83,9 @@ tasks = {
     "submit_stress_test_individual_asg_1": {
         "TYPE":'submit',
         "ASSIGNMENT_ID": 'Stress Test Individual Assignment 1',
-        "WAIT_TIME": 60,
-        "SLEEP_TIME": 3,
-        "NUMBER_OF_SUBMISSION": 1,
+        "WAIT_TIME": 120,
+        "SLEEP_TIME": 2,
+        "NUMBER_OF_SUBMISSION": 1000,
         "SECTION": '',
         "MARKER": 'b00050Last,b00050First'
     },
