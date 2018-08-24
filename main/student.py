@@ -255,9 +255,9 @@ class Student():
             # Say I am ready to submit
             try:
                 parent.totalAndUnreadyUsers[1] -= 1
-                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1], "| All Ready?:", parent.allReady)
+                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1], "| Let's Go?:", parent.allReady)
             except:
-                print("\'" + parent.user_id + "\':", "Open unreadyUsers.txt Failed (read & rewrite):", sys.exc_info()[0:2])
+                print("\'" + parent.user_id + "\':", "Access unreadyUsers list Failed:", sys.exc_info()[0:2])
                 continue
 
             # Wait until all users ready
@@ -293,9 +293,8 @@ class Student():
                 # then disappear
                 mywait(self,EC.invisibility_of_element_located((By.XPATH,xpath)),name,'T')
             except:
-                print("\'" + parent.user_id + "\':", "Wait for Submit Assignment Failed:", sys.exc_info()[0:2])
-                reload_page()
-                continue
+                print("\'" + parent.user_id + "\':", "Wait for Submit Assignment Failed:", sys.exc_info()[0:2], ", Passing...")
+                pass
 
             # print submission message & click OK 
             try:
@@ -308,9 +307,8 @@ class Student():
                 element.click()
                 print("\'" + parent.user_id + "\':", "Submit Assignment Success:", count)
             except:
-                print("\'" + parent.user_id + "\':", "Find \'md-dialog OK button\' or \'md-dialog message\' Failed:", sys.exc_info()[0:2])
-                reload_page()
-                continue
+                print("\'" + parent.user_id + "\':", "Find \'md-dialog OK button\' or \'md-dialog message\' Failed:", sys.exc_info()[0:2], ", Passing...")
+                pass
             time.sleep(self.submit_config["SLEEP_TIME"])
 
         # # calculate the min, max, avg in the log['results']
