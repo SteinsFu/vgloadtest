@@ -1,5 +1,5 @@
 import robot
-import time 
+import time
 import csv
 import configparser
 import sys
@@ -24,6 +24,9 @@ class MassControl:
         self.TEST_CASE = config['DEFAULT']['TEST_CASE']
         self.WAIT_TIME_SPAWN_TEST = float(config['DEFAULT']['WAIT_TIME_BETWEEN_SPAWNING_EACH_TEST'])
         self.READY_THRESHOLD = float(config['DEFAULT']['READY_THRESHOLD'])
+
+        # set a timer to count time elapse until setup finish (All users ready)
+        self.setupStart = time.time()
 
 
     def do_test_case(self, config, executor):
@@ -88,8 +91,17 @@ class MassControl:
             while(self.totalAndUnreadyUsers[1] > int(self.READY_THRESHOLD * self.totalAndUnreadyUsers[0])):
                 time.sleep(2)
             print("All Users Ready to submit!")
+            
+            self.setupEnd = time.time()
+            self.setupElapse = self.setupEnd - self.setupStart
+            print("Setup time used: %d m %.2lf s" % (int(self.setupElapse / 60), self.setupElapse % 60))
+            
             input("Press ENTER to Continue...\n")
             self.allReady[0] = True
+
+
+            
+
 
 
 
