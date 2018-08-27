@@ -1,8 +1,8 @@
 Testing Environemnt: Python 3.6.5 64-bit
 
-# Overview (compared with previous version)
+# Overview 
 
-    -data                           (vg_testing_data.csv)
+    -data                           
         instructor_samples.csv
         student_samples.csv
         testing_users.csv
@@ -10,13 +10,13 @@ Testing Environemnt: Python 3.6.5 64-bit
         -test_results
     -main
         -config
-            config.ini              (config.ini)
+            config.ini              
             testcase_config.py
             task_config.py
-        controller.py               (mass_test_control.py)
+        controller.py               
         instructor.py
         measure.py
-        robot.py                    (loadtest_slave.py)
+        robot.py                    
         student.python
     chromedriver
     README.text
@@ -33,36 +33,52 @@ Testing Environemnt: Python 3.6.5 64-bit
     6.  add logging funtion to save the time results and calculate the statistics
 
 
+####### Please See "Setup Docker/VM Environment (ubuntu)" #########
 # Setup the environment (reference: http://selenium-python.readthedocs.io/installation.html):
     1.  Downloading Python binding for Selenium
         $ pip install selenium
     2.  Install Drivers for browser: (This program is using chrome for the time being)
-        Chrome:	https://sites.google.com/a/chromium.org/chromedriver/downloads
-        Edge:	https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
-        Firefox:	https://github.com/mozilla/geckodriver/releases
-        Safari:	https://webkit.org/blog/6900/webdriver-support-in-safari-10/
-
+        Chrome:	 https://sites.google.com/a/chromium.org/chromedriver/downloads
+        Edge:	 https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+        Firefox: https://github.com/mozilla/geckodriver/releases
+        Safari:	 https://webkit.org/blog/6900/webdriver-support-in-safari-10/
+####### Chromedriver is located in the folder already     #########
+####### No need to install manually                       #########
+####### Please See "Setup Docker/VM Environment (ubuntu)" #########
 
 # Running the program:
-    1.  change the SUBMIT_ASSIGNMENT_PATH in config/config.ini to where the uploadfile locates
-    2.  use terminal to go to 'vgloadtest_2' directory
+    1.  change the SUBMIT_ASSIGNMENT_PATH and CHROMEDRIVER_PATH in config/config.ini to where the uploadfile locates
+    2.  use terminal to go to 'vgloadtest_uat' directory
     3.  type the following line:
             $ python3 main/controller.py
             if it fails, try:
             $ python main/controller.py
-    4.  the results will be created in 'log/test_results' as text file
+		or
+	    $ python3 main/controller.py <Start_Student_arg>
+	eg. $ python3 main/controller.py 51		<-- start testing 1000000051, 1000000052 ...
+    4.  the results will be created in 'log/test_results' as text file (commented those lines)
 
 # WorkFlow:
     1.  controller.py start parallel process:
         a.  it loads the test case configuration from 'config/testcase_config.py'
         b.  for each group in the configuration, it will create several copies to do the same task 
         c.  for a single copy, it will pass the user_name, password, task to the executor to process 
-    2.  the executor will call 'robot.lauch' in 'main/robot.py', which then invokes the unit test in 'main/template.py'
-    3.  'test_case_1' in 'main/template.py' will first login, and direct to the course page 
+    2.  the executor will call 'robot.lauch' in 'main/robot.py'
+    3.  'test_case_1' in 'main/robot.py' will first login, and direct to the course page 
     4.  when running into customized actions, it will create a instance of student or instructor accordingly:
         a. during initialization, the instance will read the task configuration from 'config/task_config.py' for a given task 
         b. process the task funtion(has repitition inside)
         c. write the results into text file under 'log/test_results'
+
+Flow Graph:
+
+	      controller.py				...
+	           |
+		robot.py				...
+		   |
+	|----------|-----------|------ ...  or  ---|--------------|--------- ...
+	|	   |	       |                   |              |
+    student.py  student.py  student.py ...     instructor.py  instructor.py ...
 
 
 # To add and run new test case:
@@ -83,7 +99,7 @@ Testing Environemnt: Python 3.6.5 64-bit
     3.  create a new task in tasks_config with the customized parameters 
 
 
-# Setup Docker Environment (ubuntu) to run:
+# Setup Docker/VM Environment (ubuntu) to run:
     # start docker service:
     > $ service docker start
     # start a ubuntu docker container:
