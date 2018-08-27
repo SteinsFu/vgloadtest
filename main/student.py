@@ -298,8 +298,8 @@ class Student():
 
             # print submission message & click OK 
             try:
-                submit_msg = driver.find_element_by_xpath("//md-dialog[@role='alertdialog']//h2").text
-                submit_msg_description = driver.find_element_by_xpath("//md-dialog[@role='alertdialog']//p").text
+                submit_msg = wait.until(EC.presence_of_element_located((By.XPATH, "//md-dialog[@role='alertdialog']//h2"))).text
+                submit_msg_description = wait.until(EC.presence_of_element_located((By.XPATH, "//md-dialog[@role='alertdialog']//p"))).text
                 print("\'" + parent.user_id + "\':", submit_msg, ": (" + submit_msg_description + ")")
                 
                 xpath = "//md-dialog[@role='alertdialog']//button"
