@@ -119,17 +119,16 @@ class Student():
 
         def reload_page():
             driver.refresh()
-            # same with 'template.py' line 109-128 (1.Switch to blackboard iframe & 2.go to course content)
+            # same with 'robot.py' (1.Switch to blackboard iframe & 2.go to course content)
             
-            # 1.Switch to iframe of Blackboard (try 5 times)
-            try_times = 5
-            for i in range(0,try_times):
+            # 1.Switch to iframe of Blackboard 
+            for i in range(0,parent.RETRY_TIMES):
                 try:
                     driver.switch_to.frame("classic-learn-iframe")
                     print("\'" + parent.user_id + "\':", "Switch to iframe of blackboard Success!")
                     break
                 except:
-                    try_string = " Trying again..." if (i < (try_times-1)) else "Stop trying..."
+                    try_string = " Trying again..." if (i < (parent.RETRY_TIMES-1)) else "Stop trying..."
                     print("\'" + parent.user_id + "\':", "Fail to switch to iframe of blackboard.", try_string, "(" + str(i+1) + ")")
                     time.sleep(parent.WAIT_TIME_NORMAL)
                     continue

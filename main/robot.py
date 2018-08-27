@@ -63,7 +63,7 @@ class Robot:
         
         time.sleep(self.WAIT_TIME_NORMAL)
 
-        # Switch to iframe of Blackboard (try 5 times)
+        # Switch to iframe of Blackboard
         for i in range(0, self.RETRY_TIMES):
             try:
                 driver.switch_to.frame("classic-learn-iframe")
