@@ -55,7 +55,7 @@ Testing Environemnt: Python 3.6.5 64-bit
             $ python main/controller.py
 		or
 	    $ python3 main/controller.py <Start_Student_arg>
-	eg. $ python3 main/controller.py 51		<-- start testing 1000000051, 1000000052 ...
+	eg. $ python3 main/controller.py 51		<-- start testing 1000000051, 1000000052 ... , 1000000100 (When COPY = 50)
     4.  the results will be created in 'log/test_results' as text file (commented those lines)
 
 # WorkFlow:

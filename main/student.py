@@ -255,7 +255,7 @@ class Student():
             # Say I am ready to submit
             try:
                 parent.totalAndUnreadyUsers[1] -= 1
-                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1], "| Let's Go?:", parent.allReady)
+                print("\'" + parent.user_id + "\':", "I'm Ready. Unready Users Left:", parent.totalAndUnreadyUsers[1], "| Submitting?:", parent.allReady)
             except:
                 print("\'" + parent.user_id + "\':", "Access unreadyUsers list Failed:", sys.exc_info()[0:2])
                 continue
