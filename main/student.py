@@ -163,7 +163,7 @@ class Student():
 
             # check if the selector exist 
             try:
-                xpath = "//select[@name='cusisCourseIds']"
+                xpath = "//select[@name='schoolCourseIds']"
                 wait.until(EC.presence_of_element_located((By.XPATH,xpath)))
             except:
                 print("\'" + parent.user_id + "\':", "Cannot find course selector ")
@@ -173,7 +173,7 @@ class Student():
             # select course
             try:
                 # xpath = "//select[@name='cusisCourseIds']/option[@label='" + self.submit_config["SECTION"]+ "']"
-                xpath = "//select[@name='cusisCourseIds']/option"
+                xpath = "//select[@name='schoolCourseIds']/option"
                 section_list = wait.until(EC.presence_of_all_elements_located((By.XPATH, xpath)))
                 section_cnt = len(section_list)
                 # randomly pick a section
@@ -182,7 +182,7 @@ class Student():
                 print("\'" + parent.user_id + "\':", "Selected Course Section:", elem.text)
                 elem.click()
             except:
-                print("\'" + parent.user_id + "\':", "Find Cusis Course ID Select Box Failed:", sys.exc_info()[1])
+                print("\'" + parent.user_id + "\':", "Find School Course ID Select Box Failed:", sys.exc_info()[1])
                 # refresh and start the new round
                 reload_page()
                 continue

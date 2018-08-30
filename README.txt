@@ -125,4 +125,12 @@ Flow Graph:
 	> ubuntu$ cd vgloadtest_uat
 	> ubuntu$ python main/controller.py
 
+# To start docker container:
+    $ service docker start
+    $ docker ps -a		(to check container ID)
+    $ docker start -a -i <container_ID>
+    
+# To create a docker ubuntu container:
+    $ docker run -it ubuntu
+
 
